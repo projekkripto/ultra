@@ -79,10 +79,10 @@ SECURITY KNOWLEDGE IS A REQUIREMENT.
 
 ### Getting Manual start
 
-* [Setup on Mac OS X](https://github.com/algobasket/PeatioCryptoExchange/blob/rebuild-peatio/doc/setup-local-osx.md)
-* [Setup on Ubuntu](https://github.com/algobasket/PeatioCryptoExchange/blob/rebuild-peatio/doc/setup-local-ubuntu.md)
-* [Deploy production server](https://github.com/algobasket/PeatioCryptoExchange/blob/rebuild-peatio/doc/deploy-production-server.md)
-* [Setup Ethereum Server](https://github.com/algobasket/PeatioCryptoExchange/blob/rebuild-peatio/doc/eth.md)
+* [Setup on Mac OS X](https://github.com/projekkripto/ultra/doc/setup-local-osx.md)
+* [Setup on Ubuntu](https://github.com/projekkripto/ultra/doc/setup-local-ubuntu.md)
+* [Deploy production server](https://github.com/projekkripto/ultra/doc/deploy-production-server.md)
+* [Setup Ethereum Server](https://github.com/projekkripto/ultra/doc/eth.md)
 
 ### API
 
