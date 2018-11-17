@@ -3,15 +3,15 @@ Deploy production server on Ubuntu 16.04
 
 ### Overview
 
-1. Setup deploy user
-2. Install [Ruby](https://www.ruby-lang.org/en/)
-3. Install [MySQL](http://www.mysql.com/)
-4. Install [Redis](http://redis.io/)
-5. Install [RabbitMQ](https://www.rabbitmq.com/)
-6. Install [Bitcoind](https://en.bitcoin.it/wiki/Bitcoind)
-7. Install [Nginx with Passenger](https://www.phusionpassenger.com/)
-8. Install JavaScript Runtime
-9. Install ImageMagick
+ 1. Setup deploy user
+ 2. Install [Ruby](https://www.ruby-lang.org/en/)
+ 3. Install [MySQL](http://www.mysql.com/)
+ 4. Install [Redis](http://redis.io/)
+ 5. Install [RabbitMQ](https://www.rabbitmq.com/)
+ 6. Install [Bitcoind](https://en.bitcoin.it/wiki/Bitcoind)
+ 7. Install [Nginx with Passenger](https://www.phusionpassenger.com/)
+ 8. Install JavaScript Runtime
+ 9. Install ImageMagick
 10. Configure Peatio
 
 ### 1. Setup deploy user
@@ -50,7 +50,7 @@ Installing [rbenv](https://github.com/sstephenson/rbenv) using a Installer
 Install Ruby through rbenv:
 
     rbenv install --verbose 2.2.2
-    rbenv global --verbose 2.2.2
+    rbenv global 2.2.2
 
 Install bundler
 
@@ -64,7 +64,7 @@ Install bundler
 
 ### 4. Install Redis
 
-    sudo apt install -y redis-server 
+    sudo apt install -y redis-server
 
 ### 5. Install RabbitMQ
 
@@ -125,7 +125,7 @@ Add HTTPS support to APT
 
     sudo apt-get install apt-transport-https ca-certificates
 
-Add the passenger repository. Note that this only works for Ubuntu 16.04. For other versions of Ubuntu, you have to add the appropriate 
+Add the passenger repository. Note that this only works for Ubuntu 16.04. For other versions of Ubuntu, you have to add the appropriate
 repository according to Section 2.3.1 of this [link](https://www.phusionpassenger.com/documentation/Users%20guide%20Nginx.html).
 
     sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list'
@@ -149,8 +149,8 @@ update the second line to read:
     passenger_ruby /home/deploy/.rbenv/shims/ruby;
 
 we will alsp need to enable passenger in nginx config file
-  
-    sudo vim /etc/nginx/nginx.conf 
+
+    sudo vim /etc/nginx/nginx.conf
 
 and uncomment
 
@@ -177,8 +177,9 @@ A JavaScript Runtime is needed for Asset Pipeline to work. Any runtime will do b
 ##### Clone the Source
 
     mkdir -p ~/peatio
-    git clone git://github.com/InfraexDev/peatio.git ~/peatio/current
-    cd peatio/current
+    cd peatio
+    git clone https://github.com/algobasket/PeatioCryptoExchange.git .
+
 
     ＃ Install dependency gems
     bundle install --without development test --path vendor/bundle
@@ -244,11 +245,10 @@ For security reason, you must setup SSL Certificate for production environment, 
 **Passenger:**
 
     sudo rm /etc/nginx/sites-enabled/default
-    sudo ln -s /home/deploy/peatio/current/config/nginx.conf /etc/nginx/conf.d/peatio.conf
+    sudo ln -s /home/deploy/peatio/config/nginx.conf /etc/nginx/conf.d/peatio.conf
     sudo service nginx restart
 
 **Liability Proof**
 
     # Add this rake task to your crontab so it runs regularly
     RAILS_ENV=production rake solvency:liability_proof
-
